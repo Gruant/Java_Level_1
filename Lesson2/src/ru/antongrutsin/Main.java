@@ -7,6 +7,8 @@ public class Main {
     public static void main(String[] args) {
         invertArray();
         invertBitArray();
+        invertArrayWithXor();
+        invertArrayTernaryOperator();
         fillArray();
         doubleIntLessSix();
         fillDiagonal();
@@ -23,7 +25,7 @@ public class Main {
      */
     static void invertArray() {
         int[] arr = {1, 1, 0, 0, 1, 0, 1, 1, 0, 0};
-        System.out.println("Задача 1\nИсходный массив: \t\t" + Arrays.toString(arr));
+        System.out.println("Задача 1 - SWITCH\nИсходный массив: \t\t" + Arrays.toString(arr));
         for (int i = 0; i < arr.length; i++) {
             switch (arr[i]) {
                 case 0:
@@ -39,13 +41,38 @@ public class Main {
         System.out.println("Преобразованный массив: " + Arrays.toString(arr));
         System.out.println();
     }
+
     // Задание 1: дополнение к 1ому заданию - выполните его таким образом, чтобы не использовались
     // условные операторы (if/else или switch/case)
     static void invertBitArray(){
         int[] arr = {1, 1, 0, 0, 1, 0, 1, 1, 0, 0};
-        System.out.println("Задача 1\nИсходный массив: \t\t" + Arrays.toString(arr));
+        System.out.println("Задача 1 - Логическое НЕ\nИсходный массив: \t\t" + Arrays.toString(arr));
         for (int i = 0; i < arr.length; i++){
             arr[i] = ~arr[i] + 2;
+        }
+        System.out.println("Преобразованный массив: " + Arrays.toString(arr));
+        System.out.println();
+    }
+
+    // Задание 1: дополнение к 1ому заданию - выполните его таким образом, чтобы не использовались
+    // условные операторы (if/else или switch/case)
+    static void invertArrayWithXor(){
+        int[] arr = {1, 1, 0, 0, 1, 0, 1, 1, 0, 0};
+        System.out.println("Задача 1 - Побитовое исключающее ИЛИ\nИсходный массив: \t\t" + Arrays.toString(arr));
+        for (int i = 0; i < arr.length; i++){
+            arr[i] ^= 1;
+        }
+        System.out.println("Преобразованный массив: " + Arrays.toString(arr));
+        System.out.println();
+    }
+
+    // Задание 1: дополнение к 1ому заданию - выполните его таким образом, чтобы не использовались
+    // условные операторы (if/else или switch/case)
+    static void invertArrayTernaryOperator(){
+        int[] arr = {1, 1, 0, 0, 1, 0, 1, 1, 0, 0};
+        System.out.println("Задача 1 - Тернарный оператор\nИсходный массив: \t\t" + Arrays.toString(arr));
+        for (int i = 0; i < arr.length; i++){
+            arr[i] = (arr[i] == 0) ? 1 : 0;
         }
         System.out.println("Преобразованный массив: " + Arrays.toString(arr));
         System.out.println();
