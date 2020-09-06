@@ -135,8 +135,6 @@ public class Main {
                     answerChars[i] = word.charAt(i);
                 }
             }
-            answer = String.valueOf(answerChars);
-            return answer;
         } else {
             for (int i = 0; i < word.length(); i++) {
                 if (word.charAt(i) == inputWord.charAt(i)) {
