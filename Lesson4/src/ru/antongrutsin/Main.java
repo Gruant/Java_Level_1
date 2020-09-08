@@ -94,8 +94,6 @@ public class Main {
                 countYX = 0;
             }
         }
-        countX = 0;
-        countY = 0;
         return false;
     }
 
@@ -141,6 +139,9 @@ public class Main {
                     countY = 0;
                 }
             }
+
+            countX = 0;
+            countY = 0;
 
             if (map[i][i] == DOT_X){
                 countXY++;
