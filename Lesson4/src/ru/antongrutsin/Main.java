@@ -5,8 +5,8 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static int SIZE = 4;
-    public static int DOTS_TO_WIN = 4;
+    public static int SIZE = 5;
+    public static int DOTS_TO_WIN = 3;
     public static final char DOT_EMPTY = '•';
     public static final char DOT_X = 'X';
     public static final char DOT_O = 'O';
@@ -54,7 +54,7 @@ public class Main {
 
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
-                if (map [i][j] == symb){
+                if (map [i][j] == symb ){
                     countX++;
                     if (countX == DOTS_TO_WIN){
                         return true;
@@ -72,6 +72,8 @@ public class Main {
                     countY = 0;
                 }
             }
+            countX = 0;
+            countY = 0;
 
             if (map[i][i] == symb){
                 countXY++;
@@ -92,6 +94,8 @@ public class Main {
                 countYX = 0;
             }
         }
+        countX = 0;
+        countY = 0;
         return false;
     }
 
@@ -107,14 +111,68 @@ public class Main {
         return true;
     }
 
-    public static void aiTurn() {
+    public static String aiTurn() {
         int x, y;
+        int countX = 0;
+        int countY = 0;
+        int countXY = 0;
+        int countYX = 0;
+        for (int i = 0; i < SIZE; i++) {
+            for (int j = 0; j < SIZE; j++){
+                if (map [i][j] == DOT_X){
+                    countX++;
+                    if (countX > 1 && isCellValid(i, j+1)){
+                        map[i][j+1] = DOT_O;
+                        System.out.println("Компьютер походил в точку " + (i + 1) + " " + (j + 2));
+                        return "";
+                    }
+                } else {
+                    countX = 0;
+                }
+
+                if (map [j][i] == DOT_X){
+                    countY++;
+                    if (countY > 1 && isCellValid(j+1, i)){
+                        map[j+1][i] = DOT_O;
+                        System.out.println("Компьютер походил в точку " + (j + 2) + " " + (i+1));
+                        return "";
+                    }
+                } else {
+                    countY = 0;
+                }
+            }
+
+            if (map[i][i] == DOT_X){
+                countXY++;
+                if (countXY > 1 && isCellValid(i+1, i+1)){
+                    map[i+1][i+1] = DOT_O;
+                    System.out.println("Компьютер походил в точку " + (i + 2) + " " + (i + 2));
+                    return "";
+                }
+            } else {
+                countXY = 0;
+            }
+
+
+            if (map[i][(SIZE - 1) - i] == DOT_X){
+                countYX++;
+                if (countYX > 1 && isCellValid(i + 1, SIZE - 2 - i)){
+                    map[i+1][SIZE - 2 - i] = DOT_O;
+                    System.out.println("Компьютер походил в точку " + (i + 2) + " " + (SIZE - 1 - i));
+                    return "";
+                }
+            } else {
+                countYX = 0;
+            }
+
+        }
         do {
             x = rand.nextInt(SIZE);
             y = rand.nextInt(SIZE);
         } while (!isCellValid(x, y));
         System.out.println("Компьютер походил в точку " + (x + 1) + " " + (y + 1));
         map[y][x] = DOT_O;
+        return "";
     }
 
     public static void humanTurn() {
@@ -157,4 +215,6 @@ public class Main {
         }
 
     }
+
+
 }
