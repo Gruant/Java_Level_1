@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Main {
 
     public static int SIZE = 5;
-    public static int DOTS_TO_WIN = 3;
+    public static int DOTS_TO_WIN = 4;
     public static final char DOT_EMPTY = '•';
     public static final char DOT_X = 'X';
     public static final char DOT_O = 'O';
@@ -47,51 +47,98 @@ public class Main {
 
 
     public static boolean checkWin(char symb) {
-        int countX = 0;
-        int countY = 0;
-        int countXY = 0;
-        int countYX = 0;
+        int countOne = 0;
+        int countTwo = 0;
+        int mainDia = 0;
+        int sideDia = 0;
+
+
+        for (int i = 0, j = 1; j < SIZE; i++, j++){
+            if (map [i][j] == symb ){
+                countOne++;
+                if (countOne == DOTS_TO_WIN){
+                    return true;
+                }
+            } else {
+                countOne = 0;
+            }
+
+
+            if (map [j][SIZE - 1 - i] == symb ){
+                countTwo++;
+                if (countTwo == DOTS_TO_WIN){
+                    return true;
+                }
+            } else {
+                countTwo = 0;
+            }
+        }
+        countOne = 0;
+        countTwo = 0;
+
+        for(int i = 1, j = 0; i < SIZE; i++, j++){
+            if (map [i][j] == symb ){
+                countOne++;
+                if (countOne == DOTS_TO_WIN){
+                    return true;
+                }
+            } else {
+                countOne = 0;
+            }
+
+            if (map [j][SIZE - 1 - i] == symb ){
+                countTwo++;
+                if (countTwo == DOTS_TO_WIN){
+                    return true;
+                }
+            } else {
+                countTwo = 0;
+            }
+        }
+        countOne = 0;
+        countTwo = 0;
 
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
                 if (map [i][j] == symb ){
-                    countX++;
-                    if (countX == DOTS_TO_WIN){
+                    countOne++;
+                    if (countOne == DOTS_TO_WIN){
                         return true;
                     }
                 } else {
-                    countX = 0;
+                    countOne = 0;
                 }
 
                 if (map [j][i] == symb ){
-                    countY++;
-                    if (countY == DOTS_TO_WIN){
+                    countTwo++;
+                    if (countTwo == DOTS_TO_WIN){
                         return true;
                     }
                 } else {
-                    countY = 0;
+                    countTwo = 0;
                 }
             }
-            countX = 0;
-            countY = 0;
+            countOne = 0;
+            countTwo = 0;
+
 
             if (map[i][i] == symb){
-                countXY++;
-                if (countXY == DOTS_TO_WIN){
+                mainDia++;
+                if (mainDia == DOTS_TO_WIN){
                     return true;
                 }
             } else {
-                countXY = 0;
+                mainDia = 0;
             }
 
 
             if(map[i][(SIZE - 1) - i] == symb){
-                countYX++;
-                if (countYX == DOTS_TO_WIN){
+                sideDia++;
+                if (sideDia == DOTS_TO_WIN){
                     return true;
                 }
             } else {
-                countYX = 0;
+                sideDia = 0;
             }
         }
         return false;
