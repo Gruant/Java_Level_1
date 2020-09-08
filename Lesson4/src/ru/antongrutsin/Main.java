@@ -123,6 +123,10 @@ public class Main {
                         map[i][j+1] = DOT_O;
                         System.out.println("Компьютер походил в точку " + (i + 1) + " " + (j + 2));
                         return "";
+                    } else if(countX > 1 && isCellValid(i, j-2)) {
+                        map[i][j-2] = DOT_O;
+                        System.out.println("Компьютер походил в точку " + (i + 1) + " " + (j - 1));
+                        return "";
                     }
                 } else {
                     countX = 0;
@@ -133,6 +137,10 @@ public class Main {
                     if (countY > 1 && isCellValid(j+1, i)){
                         map[j+1][i] = DOT_O;
                         System.out.println("Компьютер походил в точку " + (j + 2) + " " + (i+1));
+                        return "";
+                    } else if (countY > 1 && isCellValid(j-2, i)){
+                        map[j-2][i] = DOT_O;
+                        System.out.println("Компьютер походил в точку " + (j - 1) + " " + (i+1));
                         return "";
                     }
                 } else {
@@ -149,6 +157,10 @@ public class Main {
                     map[i+1][i+1] = DOT_O;
                     System.out.println("Компьютер походил в точку " + (i + 2) + " " + (i + 2));
                     return "";
+                } else if(countXY > 1 && isCellValid(i-2, i-2)){
+                    map[i-2][i-2] = DOT_O;
+                    System.out.println("Компьютер походил в точку " + (i - 1) + " " + (i - 1));
+                    return "";
                 }
             } else {
                 countXY = 0;
@@ -160,6 +172,10 @@ public class Main {
                 if (countYX > 1 && isCellValid(i + 1, SIZE - 2 - i)){
                     map[i+1][SIZE - 2 - i] = DOT_O;
                     System.out.println("Компьютер походил в точку " + (i + 2) + " " + (SIZE - 1 - i));
+                    return "";
+                } else if(countYX > 1 && isCellValid(i - 2, SIZE + 1- i)){
+                    map[i-2][SIZE + 1 - i] = DOT_O;
+                    System.out.println("Компьютер походил в точку " + (i - 1) + " " + (SIZE + 2 - i));
                     return "";
                 }
             } else {
