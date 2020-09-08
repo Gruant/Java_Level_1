@@ -166,13 +166,13 @@ public class Main {
             for (int j = 0; j < SIZE; j++){
                 if (map [i][j] == DOT_X){
                     countX++;
-                    if (countX > 1 && isCellValid(i, j+1)){
+                    if (countX > 1 && isCellValid(j+1, i)){
                         map[i][j+1] = DOT_O;
-                        System.out.println("Компьютер походил в точку " + (i + 1) + " " + (j + 2));
+                        System.out.println("Компьютер походил в точку " + (j + 2) + " " + (i + 1));
                         return "";
-                    } else if(countX > 1 && isCellValid(i, j-2)) {
+                    } else if(countX > 1 && isCellValid(j-2, i)) {
                         map[i][j-2] = DOT_O;
-                        System.out.println("Компьютер походил в точку " + (i + 1) + " " + (j - 1));
+                        System.out.println("Компьютер походил в точку " + (j - 1) + " " + (i + 1));
                         return "";
                     }
                 } else {
@@ -183,20 +183,17 @@ public class Main {
                     countY++;
                     if (countY > 1 && isCellValid(j+1, i)){
                         map[j+1][i] = DOT_O;
-                        System.out.println("Компьютер походил в точку " + (j + 2) + " " + (i+1));
+                        System.out.println("Компьютер походил в точку " + (i+1) + " " + (j + 2));
                         return "";
                     } else if (countY > 1 && isCellValid(j-2, i)){
                         map[j-2][i] = DOT_O;
-                        System.out.println("Компьютер походил в точку " + (j - 1) + " " + (i+1));
+                        System.out.println("Компьютер походил в точку " + (i+1) + " " + (j-1));
                         return "";
                     }
                 } else {
                     countY = 0;
                 }
             }
-
-            countX = 0;
-            countY = 0;
 
             if (map[i][i] == DOT_X){
                 countXY++;
@@ -216,13 +213,13 @@ public class Main {
 
             if (map[i][(SIZE - 1) - i] == DOT_X){
                 countYX++;
-                if (countYX > 1 && isCellValid(i + 1, SIZE - 2 - i)){
+                if (countYX > 1 && isCellValid(SIZE - 2 -1, i + 1)){
                     map[i+1][SIZE - 2 - i] = DOT_O;
-                    System.out.println("Компьютер походил в точку " + (i + 2) + " " + (SIZE - 1 - i));
+                    System.out.println("Компьютер походил в точку " + (SIZE - 1 - i) + " " + (i + 2));
                     return "";
-                } else if(countYX > 1 && isCellValid(i - 2, SIZE + 1- i)){
+                } else if(countYX > 1 && isCellValid(SIZE + 1 - i, i - 2)){
                     map[i-2][SIZE + 1 - i] = DOT_O;
-                    System.out.println("Компьютер походил в точку " + (i - 1) + " " + (SIZE + 2 - i));
+                    System.out.println("Компьютер походил в точку " + (SIZE + 1 - i) + " " + (i - 1));
                     return "";
                 }
             } else {
