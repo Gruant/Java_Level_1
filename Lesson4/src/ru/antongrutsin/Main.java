@@ -52,7 +52,7 @@ public class Main {
         int mainDia = 0;
         int sideDia = 0;
 
-
+        //проверка диагоналей, но не главной и не побочной
         for (int i = 0, j = 1; j < SIZE; i++, j++){
             if (map [i][j] == symb ){
                 countOne++;
@@ -76,6 +76,7 @@ public class Main {
         countOne = 0;
         countTwo = 0;
 
+        //проверка диагоналей, но не главной и не побочной
         for(int i = 1, j = 0; i < SIZE; i++, j++){
             if (map [i][j] == symb ){
                 countOne++;
@@ -98,6 +99,7 @@ public class Main {
         countOne = 0;
         countTwo = 0;
 
+        //проверка горизонтали и вертикали
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
                 if (map [i][j] == symb ){
@@ -121,7 +123,7 @@ public class Main {
             countOne = 0;
             countTwo = 0;
 
-
+            //проверка шлавнйо и побочной диагонали
             if (map[i][i] == symb){
                 mainDia++;
                 if (mainDia == DOTS_TO_WIN){
@@ -155,7 +157,7 @@ public class Main {
         }
         return true;
     }
-
+    // ИИ ход и блокировка
     public static String aiTurn() {
         int x, y;
         int countX = 0;
@@ -164,7 +166,7 @@ public class Main {
         int countYX = 0;
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++){
-
+                //проверка на ход блокировки по горизонтали (в ряд и по бокам)
                 if (map [i][j] == DOT_X){
                     countX++;
                     if (countX > 1 && isCellValid(j+1, i)){
@@ -186,7 +188,7 @@ public class Main {
                     }
                     countX = 0;
                 }
-
+                //проверка на ход блокировки по вертикали (в ряд и по бокам)
                 if (map [j][i] == DOT_X){
                     countY++;
                     if (countY > 1 && isCellValid(i, j+1)){
@@ -213,6 +215,7 @@ public class Main {
             countX = 0;
             countY = 0;
 
+            //проверка на ход блокировки по главной и побочной диагонали (в ряд и по бокам)
             if (map[i][i] == DOT_X){
                 countXY++;
                 if (countXY > 1 && isCellValid(i+1, i+1)){
