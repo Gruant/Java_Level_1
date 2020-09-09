@@ -177,6 +177,13 @@ public class Main {
                         return "";
                     }
                 } else {
+                    if (isCellValid(j - 1, i) && isCellValid(j + 1, i)){
+                        if (map[i][j+1] == DOT_X && map[i][j-1] == DOT_X) {
+                            map[i][j] = DOT_O;
+                            System.out.println("Компьютер походил в точку " + (j + 1) + " " + (i + 1));
+                            return "";
+                        }
+                    }
                     countX = 0;
                 }
 
@@ -192,6 +199,13 @@ public class Main {
                         return "";
                     }
                 } else {
+                    if (isCellValid(i, j - 1) && isCellValid(i, j + 1)){
+                        if (map[j + 1][i] == DOT_X && map[j - 1][i] == DOT_X) {
+                            map[j][i] = DOT_O;
+                            System.out.println("Компьютер походил в точку " + (i + 1) + " " + (j + 1));
+                            return "";
+                        }
+                    }
                     countY = 0;
                 }
             }
@@ -256,6 +270,7 @@ public class Main {
         }
         return map[y][x] == DOT_EMPTY;
     }
+
 
     public static void initMap() {
         map = new char[SIZE][SIZE];
