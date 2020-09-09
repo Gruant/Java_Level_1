@@ -164,6 +164,7 @@ public class Main {
         int countYX = 0;
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++){
+
                 if (map [i][j] == DOT_X){
                     countX++;
                     if (countX > 1 && isCellValid(j+1, i)){
@@ -181,11 +182,11 @@ public class Main {
 
                 if (map [j][i] == DOT_X){
                     countY++;
-                    if (countY > 1 && isCellValid(j+1, i)){
+                    if (countY > 1 && isCellValid(i, j+1)){
                         map[j+1][i] = DOT_O;
                         System.out.println("Компьютер походил в точку " + (i+1) + " " + (j + 2));
                         return "";
-                    } else if (countY > 1 && isCellValid(j-2, i)){
+                    } else if (countY > 1 && isCellValid(i, j-2)){
                         map[j-2][i] = DOT_O;
                         System.out.println("Компьютер походил в точку " + (i+1) + " " + (j-1));
                         return "";
@@ -194,6 +195,9 @@ public class Main {
                     countY = 0;
                 }
             }
+
+            countX = 0;
+            countY = 0;
 
             if (map[i][i] == DOT_X){
                 countXY++;
