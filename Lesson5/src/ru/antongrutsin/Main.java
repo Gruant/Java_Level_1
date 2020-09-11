@@ -3,7 +3,6 @@ package ru.antongrutsin;
 import ru.antongrutsin.person.Person;
 
 public class Main {
-    private static int age = 40;
 
 
     public static void main(String[] args) {
@@ -21,11 +20,12 @@ public class Main {
                 "+7-904-434-56-78", 60_000, 24);
 
 
-        System.out.printf("Сотрудники старше %d лет:\n", age);
+        int ageLimit = 40;
+        System.out.printf("Сотрудники старше %d лет:\n", ageLimit);
         System.out.println();
 
         for(Person x: personArray){
-            if(x.getAge() > age){
+            if(x.getAge() > ageLimit){
                 x.displayInfo();
                 System.out.println();
             }
