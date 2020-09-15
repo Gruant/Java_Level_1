@@ -20,7 +20,6 @@ public class Cat extends Animal {
     void swim(float value){
         if (swimDistanceLimit == 0){
             System.out.println("Кошка не умеет плавать");
-            super.type = "Кошка";
         }
         else {
             super.swim(this.swimDistanceLimit);
