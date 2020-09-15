@@ -1,14 +1,13 @@
 package ru.antongrutsin;
 
-public abstract class Animal {
+public class Animal {
 
     protected String type;
     protected float runDistanceLimit;
     protected float jumpHeightLimit;
     protected float swimDistanceLimit;
 
-    public Animal(String type, float runDistanceLimit, float jumpHeightLimit) {
-        this.type = type;
+    public Animal(float runDistanceLimit, float jumpHeightLimit) {
         this.runDistanceLimit = runDistanceLimit;
         this.jumpHeightLimit = jumpHeightLimit;
     }

@@ -3,9 +3,9 @@ package ru.antongrutsin;
 public class Main {
 
     public static void main(String[] args) {
-        Cat cat1 = new Cat("Кошка",20, 30);
-        Cat cat2 = new Cat("Кошка", 20, 30, 5);
-        Dog dog1 = new Dog("Собака",599, 1, 20);
+        Cat cat1 = new Cat(20, 30);
+        Cat cat2 = new Cat( 20, 30, 5);
+        Dog dog1 = new Dog(599, 1, 20);
 
         cat1.jump(200);
         cat1.run(50);
