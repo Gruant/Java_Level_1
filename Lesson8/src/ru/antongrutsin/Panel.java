@@ -15,14 +15,14 @@ public class Panel extends JPanel {
 
     //так и не разобрался в менеджерах. До сих пор не понял, как выставить различные размеры
     public Panel() {
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        setLayout(new BorderLayout());
 
         result = 0;
         lastCommand = "=";
         start = true;
 
         display = new JLabel("");
-        display.setHorizontalAlignment(4);
+        display.setHorizontalAlignment(SwingConstants.CENTER);
         display.setSize(200, 40);
         add(display, BorderLayout.NORTH);
 
@@ -34,7 +34,7 @@ public class Panel extends JPanel {
                     display.setText("");
                     start = false;
                 }
-                display.setText(display.getText() + input);
+                display.setText(input);
             }
         };
 
